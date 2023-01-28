@@ -1,0 +1,8 @@
+SELECT Orders.shipcountry As Country, ROUND(SUM((unitprice-(unitprice*discount))*quantity), 3) as Order_Amount from 'Order Details' 
+
+JOIN Orders on Orders.OrderID = 'Order Details'.orderid
+
+WHERE Orders.orderdate BETWEEN '2016-01-01' and '2018-12-31'
+GROUP by Orders.shipcountry
+order by Order_Amount DESC
+
